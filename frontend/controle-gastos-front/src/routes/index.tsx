@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "../pages/Dashboard";
-import PessoaList from "../pages/Pessoas/PessoaList";
-import CategoriaList from "../pages/Categorias/CategoriaList";
-import TransacaoList from "../pages/Transacoes/TransacaoList";
+import PessoasList from "../pages/Pessoas/PessoasList";
+import CategoriasList from "../pages/Categorias/CategoriasList";
+import TransacoesList from "../pages/Transacoes/TransacoesList";
 import RelatorioPessoas from "../pages/Relatorios/RelatorioPessoas";
 
 export function AppRoutes() {
@@ -10,10 +10,10 @@ export function AppRoutes() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Dashboard />} />
-        <Route path="/pessoas" element={<PessoaList />} />
-        <Route path="/categorias" element={<CategoriaList />} />
-        <Route path="/transacoes" element={<TransacaoList />} />
-        <Route path="/relatorios/pessoas" element={<RelatorioPessoas />} />
+        <Route path="/pessoas" element={<PessoasList />} />
+        <Route path="/categorias" element={<CategoriasList />} />
+        <Route path="/transacoes" element={<TransacoesList />} />
+        <Route path="/relatorios" element={<RelatorioPessoas />} />
       </Routes>
     </BrowserRouter>
   );
