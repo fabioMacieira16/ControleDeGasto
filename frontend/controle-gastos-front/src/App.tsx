@@ -1,8 +1,11 @@
+import { AppRoutes } from "./routes";
+import { MainLayout } from "./layouts/MainLayout";
+
 function App() {
   return (
-    <div className="App">
-      <h1>Controle de Gastos</h1>
-    </div>
+    <MainLayout>
+      <AppRoutes />
+    </MainLayout>
   );
 }
 
