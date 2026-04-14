@@ -1,5 +1,5 @@
 import { api } from "../api/axios";
-import { CreatePessoaDTO } from "../types/pessoa";
+import type { CreatePessoaDTO } from "../types/pessoa";
 
 export const pessoaService = {
   getAll: async () => {
