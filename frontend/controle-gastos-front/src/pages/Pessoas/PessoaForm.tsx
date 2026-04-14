@@ -9,7 +9,7 @@ import { Button } from "../../components/Button";
 
 const schema = z.object({
   nome: z.string().min(1, "Nome obrigatório").max(200, "Máximo 200 caracteres"),
-  idade: z.coerce.number({ invalid_type_error: "Idade obrigatória" }).min(0, "Idade inválida"),
+  idade: z.number({ error: "Idade obrigatória" }).min(0, "Idade inválida"),
 });
 
 type FormData = z.infer<typeof schema>;

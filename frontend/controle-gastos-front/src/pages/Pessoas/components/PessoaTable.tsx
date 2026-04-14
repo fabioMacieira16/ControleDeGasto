@@ -39,5 +39,3 @@ export default function PessoaTable({ pessoas, onEdit, onDelete }: Props) {
     </table>
   );
 }
-  );
-}

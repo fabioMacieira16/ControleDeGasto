@@ -10,7 +10,7 @@ import { Button } from "../../components/Button";
 
 const schema = z.object({
   descricao: z.string().min(1, "Descrição obrigatória").max(200),
-  finalidade: z.coerce.number().min(1, "Finalidade obrigatória"),
+  finalidade: z.number().min(1, "Finalidade obrigatória"),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -59,7 +59,7 @@ export default function CategoriaForm({ onClose }: Props) {
         id="finalidade"
         label="Finalidade"
         options={finalidadeOptions}
-        {...register("finalidade")}
+        {...register("finalidade", { setValueAs: (v: string) => Number(v) })}
         error={errors.finalidade?.message}
       />
 

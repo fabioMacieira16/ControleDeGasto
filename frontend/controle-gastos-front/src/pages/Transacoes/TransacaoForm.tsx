@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -16,10 +15,10 @@ import { Button } from "../../components/Button";
 
 const schema = z.object({
   descricao: z.string().min(1, "Descrição obrigatória").max(200),
-  valor: z.coerce.number().positive("Valor deve ser positivo"),
-  tipo: z.coerce.number().min(1, "Tipo obrigatório"),
-  categoriaId: z.coerce.number().min(1, "Categoria obrigatória"),
-  pessoaId: z.coerce.number().min(1, "Pessoa obrigatória"),
+  valor: z.number().positive("Valor deve ser positivo"),
+  tipo: z.number().min(1, "Tipo obrigatório"),
+  categoriaId: z.number().min(1, "Categoria obrigatória"),
+  pessoaId: z.number().min(1, "Pessoa obrigatória"),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -98,7 +97,7 @@ export default function TransacaoForm({ onClose }: Props) {
         type="number"
         step="0.01"
         min="0.01"
-        {...register("valor")}
+        {...register("valor", { setValueAs: (v: string) => Number(v) })}
         error={errors.valor?.message}
       />
 
@@ -106,7 +105,7 @@ export default function TransacaoForm({ onClose }: Props) {
         id="pessoaId"
         label="Pessoa"
         options={pessoaOptions}
-        {...register("pessoaId")}
+        {...register("pessoaId", { setValueAs: (v: string) => Number(v) })}
         error={errors.pessoaId?.message}
       />
 
@@ -114,7 +113,7 @@ export default function TransacaoForm({ onClose }: Props) {
         id="tipo"
         label="Tipo"
         options={tipoOptions}
-        {...register("tipo")}
+        {...register("tipo", { setValueAs: (v: string) => Number(v) })}
         error={errors.tipo?.message}
       />
 
@@ -128,7 +127,7 @@ export default function TransacaoForm({ onClose }: Props) {
         id="categoriaId"
         label="Categoria"
         options={categoriaOptions}
-        {...register("categoriaId")}
+        {...register("categoriaId", { setValueAs: (v: string) => Number(v) })}
         error={errors.categoriaId?.message}
       />
 
