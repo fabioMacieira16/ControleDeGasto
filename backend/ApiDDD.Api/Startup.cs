@@ -22,6 +22,16 @@ namespace ApiDDD.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("FrontendPolicy", policy =>
+                {
+                    policy.WithOrigins("http://localhost:5173")
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
+
             services.AddControllers();
 
             services.AddAutoMapperConfig();
@@ -45,6 +55,8 @@ namespace ApiDDD.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("FrontendPolicy");
 
             app.UseSwaggerConfig();
             app.UseExceptionHandlerMiddleware();

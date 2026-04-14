@@ -1,8 +1,16 @@
+import { BrowserRouter } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+import { AppRoutes } from "./routes";
+import { MainLayout } from "./layouts/MainLayout";
+
 function App() {
   return (
-    <div className="App">
-      <h1>Controle de Gastos</h1>
-    </div>
+    <BrowserRouter>
+      <Toaster position="top-right" />
+      <MainLayout>
+        <AppRoutes />
+      </MainLayout>
+    </BrowserRouter>
   );
 }
 
